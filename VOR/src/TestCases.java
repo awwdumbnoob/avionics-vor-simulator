@@ -2,6 +2,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Testing cases
+ * @author Duane
+ */
 
 public class TestCases {
 

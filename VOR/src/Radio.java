@@ -1,16 +1,15 @@
-import java.util.Random;
-
 /**
  * Simulated radio for a VOR simulator
- * @author Duane Leong
+ * @author Duane
  *
  */
+
+import java.util.Random;
 
 public class Radio {
 	
 	private String stationID; //string representation of morse code
 	private int radial; //radial integer between 0-360
-	private boolean overStation; //1:25 chance the radio is directly over the station
 	
 	/**
 	 * Default Constructor, sets the ID and radial as random values
@@ -57,14 +56,6 @@ public class Radio {
 		
 		this.stationID = id.toString();
 	}
-	
-	/**
-	 * Sets overStation true 1 out of 25 times randomly
-	 */
-	public void setRandomOverStation() {
-		Random random = new Random();
-		this.overStation = (random.nextInt(25) == 0);
-	}
 
 	/**
 	 * Gives the station ID as a String
@@ -80,14 +71,6 @@ public class Radio {
 	 */
 	public int getRadial() {
 		return radial;
-	}
-	
-	/**
-	 * Gives the status of the radio (over station or not)
-	 * @return True if over station, false otherwise
-	 */
-	public boolean getOverStation() {
-		return this.overStation;
 	}
 	
 }

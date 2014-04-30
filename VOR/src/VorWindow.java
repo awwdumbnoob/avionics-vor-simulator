@@ -22,13 +22,15 @@ import javax.swing.JLabel;
  * Just playing around with WindowBuilder
  * Tested out display of the radio's radial and station ID
  * 
- * @author Duane
+ * @author Duane Leong
  */
+
 public class VorWindow {
 
 	private JFrame frame;
 	private JTextField idDisplay;
 	private JTextField radialDisplay;
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -59,11 +61,38 @@ public class VorWindow {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 500, 500);
+		frame.setBounds(100, 100, 200, 200);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		panel = new JPanel();
+		panel.setBounds(31, 6, 134, 151);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
 		JButton btnNewButton = new JButton("Reset");
+		btnNewButton.setBounds(21, 121, 100, 30);
+		panel.add(btnNewButton);
+		
+		idDisplay = new JTextField();
+		idDisplay.setBounds(0, 81, 134, 28);
+		panel.add(idDisplay);
+		idDisplay.setText("ID");
+		idDisplay.setColumns(10);
+		
+		radialDisplay = new JTextField();
+		radialDisplay.setBounds(0, 16, 134, 28);
+		panel.add(radialDisplay);
+		radialDisplay.setText("Radial");
+		radialDisplay.setColumns(10);
+		
+		JLabel idLbl = new JLabel("ID");
+		idLbl.setBounds(0, 65, 61, 16);
+		panel.add(idLbl);
+		
+		JLabel radialLbl = new JLabel("Radial");
+		radialLbl.setBounds(0, 0, 61, 16);
+		panel.add(radialLbl);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Radio radio = new Radio();
@@ -71,27 +100,5 @@ public class VorWindow {
 				idDisplay.setText(radio.getStationID());
 			}
 		});
-		btnNewButton.setBounds(200, 400, 100, 30);
-		frame.getContentPane().add(btnNewButton);
-		
-		idDisplay = new JTextField();
-		idDisplay.setText("ID");
-		idDisplay.setBounds(178, 217, 134, 28);
-		frame.getContentPane().add(idDisplay);
-		idDisplay.setColumns(10);
-		
-		radialDisplay = new JTextField();
-		radialDisplay.setText("Radial");
-		radialDisplay.setBounds(178, 152, 134, 28);
-		frame.getContentPane().add(radialDisplay);
-		radialDisplay.setColumns(10);
-		
-		JLabel idLbl = new JLabel("ID");
-		idLbl.setBounds(178, 201, 61, 16);
-		frame.getContentPane().add(idLbl);
-		
-		JLabel radialLbl = new JLabel("Radial");
-		radialLbl.setBounds(178, 136, 61, 16);
-		frame.getContentPane().add(radialLbl);
 	}
 }

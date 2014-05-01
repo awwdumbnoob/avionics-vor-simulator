@@ -17,6 +17,10 @@ import java.awt.Component;
 import javax.swing.Box;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
+import javax.swing.JToolBar;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JMenu;
 
 /**
  * Just playing around with WindowBuilder
@@ -66,13 +70,20 @@ public class VorWindow {
 		frame.getContentPane().setLayout(null);
 		
 		panel = new JPanel();
-		panel.setBounds(31, 6, 134, 151);
+		panel.setBounds(32, 27, 134, 151);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Reset");
 		btnNewButton.setBounds(21, 121, 100, 30);
 		panel.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Radio radio = new Radio();
+				radialDisplay.setText(Integer.toString(radio.getRadial()));
+				idDisplay.setText(radio.getStationID());
+			}
+		});
 		
 		idDisplay = new JTextField();
 		idDisplay.setBounds(0, 81, 134, 28);
@@ -93,12 +104,36 @@ public class VorWindow {
 		JLabel radialLbl = new JLabel("Radial");
 		radialLbl.setBounds(0, 0, 61, 16);
 		panel.add(radialLbl);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		
+		//Menu Bar
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 200, 22);
+		frame.getContentPane().add(menuBar);
+		
+		//File Menu
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		//New Button
+		JMenuItem mntmNew = new JMenuItem("New");
+		mntmNew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				Radio radio = new Radio();
 				radialDisplay.setText(Integer.toString(radio.getRadial()));
 				idDisplay.setText(radio.getStationID());
 			}
 		});
+		
+		mnFile.add(mntmNew);
+		
+		//Quit Button
+		JMenuItem mntmQuit = new JMenuItem("Quit");
+		mntmQuit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		mnFile.add(mntmQuit);
+		
 	}
 }

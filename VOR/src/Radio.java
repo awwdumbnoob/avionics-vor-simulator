@@ -25,6 +25,7 @@ public class Radio {
 	public void setRandom() {
 		this.randomStationID();
 		this.randomRadial();
+		this.randomOverStation();
 	}
 	
 	/**
@@ -35,6 +36,7 @@ public class Radio {
 	public Radio(String stationID, int radial) {
 		this.stationID = stationID;
 		this.radial = radial;
+		this.randomOverStation();
 	}
 	
 	/**
@@ -61,7 +63,7 @@ public class Radio {
 	/**
 	 * Sets overStation true 1 out of 25 times randomly
 	 */
-	public void setRandomOverStation() {
+	public void randomOverStation() {
 		Random random = new Random();
 		this.overStation = (random.nextInt(25) == 0);
 	}
@@ -71,7 +73,7 @@ public class Radio {
 	 * @return Station ID as a String
 	 */
 	public String getStationID() {
-		return stationID;
+		return this.stationID;
 	}
 	
 	/**
@@ -79,7 +81,7 @@ public class Radio {
 	 * @return radial as an integer between 0-359
 	 */
 	public int getRadial() {
-		return radial;
+		return this.radial;
 	}
 	
 	/**
@@ -89,5 +91,7 @@ public class Radio {
 	public boolean getOverStation() {
 		return this.overStation;
 	}
+	
+	
 	
 }

@@ -55,8 +55,8 @@ public class Calculations {
 		
 		int rotation = shortestRadial(intercepted, obs);;
 		
-		//checks for the case of coming FROM
-		if (!goingTo(intercepted, obs)) {
+		//checks for the case of going TO
+		if (goingTo(intercepted, obs)) {
 			rotation = shortestRadial(intercepted+180, obs);
 		}
 
@@ -78,7 +78,7 @@ public class Calculations {
 	 */
 	public static boolean goingTo(int intercepted, int obs){
 		int rotation = Calculations.shortestRadial(intercepted, obs);
-		return !(Math.abs(rotation) > 90);
+		return (Math.abs(rotation) > 90);
 	}
 	
 	/**

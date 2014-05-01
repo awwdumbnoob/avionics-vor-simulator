@@ -60,7 +60,7 @@ public class TestCases {
 	@Test
 	public void testGoingTo() {
 		int[] obs = {-100, -90, -89, -10, 0, 10, 89, 90, 100};
-		boolean[] expected = {false, true, true, true, true, true, true, true, false};
+		boolean[] expected = {true, false, false, false, false, false, false, false, true};
 		
 		for (int i = 0; i < obs.length; i++) {
 			boolean answer = Calculations.goingTo(0, obs[i]);

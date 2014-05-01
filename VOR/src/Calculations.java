@@ -57,7 +57,7 @@ public class Calculations {
 		
 		//checks for the case of going TO
 		if (goingTo(intercepted, obs)) {
-			rotation = shortestRadial(intercepted+180, obs);
+			rotation = shortestRadial(intercepted-180, obs);
 		}
 
 		//clamps rotation between -10 and 10 degrees

@@ -59,16 +59,7 @@ public class Calculations {
 		if (!goingTo(intercepted, obs)) {
 			rotation = shortestRadial(intercepted+180, obs);
 		}
-		
-		/*
-		int rotation = shortestRadial(intercepted, obs);
-		
-		//checks for the case of the angle being greater than +/- 90 (going TO)
-		if (rotation > 90 || rotation < -90) {
-			rotation = shortestRadial(intercepted+180, obs);
-		}
-		*/
-		
+
 		//clamps rotation between -10 and 10 degrees
 		int clampedRotation = Math.max(-10, Math.min(10, rotation));
 		

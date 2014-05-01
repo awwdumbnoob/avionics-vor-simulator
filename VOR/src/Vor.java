@@ -1,12 +1,16 @@
+import java.util.Random;
+
 /**
  * Simulates a avionic VOR system.
  * Main class for the VOR
+ * Calculations primarily done in Calculations class
  * @author Duane Leong
  */
 public class Vor {
 	
 	private Radio radio;
 	private int obsInput; //value of obs input
+	private boolean overStation;
 	
 	/**
 	 * Constructor for VOR
@@ -14,15 +18,18 @@ public class Vor {
 	public Vor() {
 		this.radio = new Radio();
 		this.obsInput = 0;
+		//1:25 chance the VOR is over the radio station
+		Random random = new Random();
+		this.overStation = (random.nextInt(25) == 0);
 	}
 	
 	/**
 	 * Setter for obInput
-	 * @param value to be set to obsInput
+	 * @param radial value to be set to obsInput
 	 */
-	public void setObs(int value) {
+	public void setObs(int radial) {
 		//makes sure the obs always remains a positive between 0-359
-		this.obsInput = Calculations.normalizeAngle(value);
+		this.obsInput = Calculations.normalizeAngle(radial);
 	}
 	
 	/**
@@ -50,7 +57,7 @@ public class Vor {
 	 */
 	public boolean getSignal() {
 		int intercepted = radio.getRadial();
-		return !(radio.getOverStation()) ||
+		return !(overStation) ||
 				!(Calculations.checkAbeam(intercepted, this.obsInput));
 	}
 	

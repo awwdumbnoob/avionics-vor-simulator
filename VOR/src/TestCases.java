@@ -18,7 +18,7 @@ public class TestCases {
 			int radial = radio.getRadial();
 			String id = radio.getStationID();
 			assertTrue("Valid Station ID", id.matches("[A-Z]{3}"));
-			assertTrue("Radial between 0 and 360", radial >= 0 && radial <=359 );
+			assertTrue("Radial between 0 and 359", radial >= 0 && radial <=359 );
 			radio.setRandom();
 		}
 	}

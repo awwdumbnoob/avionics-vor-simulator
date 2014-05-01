@@ -1,7 +1,7 @@
 import java.util.Random;
 
 /**
- * Simulates a avionic VOR system.
+ * Simulates an avionic VOR system.
  * Main class for the VOR
  * Calculations primarily done in Calculations class
  * @author Duane Leong
@@ -70,6 +70,15 @@ public class Vor {
 	 */
 	public boolean goingTo() {
 		return Calculations.goingTo(radio.getRadial(), this.obsInput);
+	}
+
+	/**
+	 * Gets the current OBS value as an integer.  Should awlways remain a positive
+	 * integer between 0-359.
+	 * @return int of the current OBS value
+	 */
+	public int getObs() {
+		return this.obsInput;
 	}
 	
 	/**

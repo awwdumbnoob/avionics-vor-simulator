@@ -36,14 +36,6 @@ public class Radio {
 	}
 	
 	/**
-	 * Sets the radial as a random radial between 0-359
-	 */
-	public void randomRadial() {
-		Random random = new Random();
-		this.radial = random.nextInt(359);
-	} 
-
-	/**
 	 * Sets the ID as a random 3 character ID
 	 */
 	public void randomStationID() {
@@ -55,14 +47,14 @@ public class Radio {
 		
 		this.stationID = id.toString();
 	}
-
+	
 	/**
-	 * Gives the radial as an integer
-	 * @return radial as an integer between 0-359
+	 * Sets the radial as a random radial between 0-359
 	 */
-	public int getRadial() {
-		return this.radial;
-	}
+	public void randomRadial() {
+		Random random = new Random();
+		this.radial = random.nextInt(359);
+	} 
 
 	/**
 	 * Gives the station ID as a String
@@ -70,5 +62,13 @@ public class Radio {
 	 */
 	public String getStationID() {
 		return this.stationID;
+	}
+	
+	/**
+	 * Gives the radial as an integer
+	 * @return radial as an integer between 0-359
+	 */
+	public int getRadial() {
+		return this.radial;
 	}
 }

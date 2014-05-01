@@ -48,7 +48,7 @@ public class TestCases {
 		
 		for (int i = 0; i < obs.length; i++) {
 			int answer = Calculations.needleAngle(10, obs[i]);
-			System.out.println(obs[i] + ":" + expected[i] + ":" + answer);
+			//System.out.println(obs[i] + ":" + expected[i] + ":" + answer);
 			assertTrue("Expected radial is " + answer, answer == expected[i]);
 		}
 		
@@ -66,7 +66,7 @@ public class TestCases {
 			boolean answer = Calculations.goingTo(0, obs[i]);
 			assertTrue("Going to test should be: " + expected[i] + "\nAnswer was: " + answer,
 					answer == expected[i]);
-			System.out.println(answer);
+			//System.out.println(answer);
 		}
 	}
 	

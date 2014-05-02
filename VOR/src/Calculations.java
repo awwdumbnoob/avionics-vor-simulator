@@ -53,11 +53,14 @@ public class Calculations {
 	 */
 	public static int needleAngle(int intercepted, int obs) {
 		
-		int rotation = shortestRadial(intercepted, obs);;
+		int rotation;
 		
 		//checks for the case of going TO
 		if (goingTo(intercepted, obs)) {
-			rotation = shortestRadial(intercepted-180, obs);
+			rotation = -shortestRadial(intercepted+180, obs);
+		}
+		else {
+			rotation = shortestRadial(intercepted, obs);
 		}
 
 		//clamps rotation between -10 and 10 degrees

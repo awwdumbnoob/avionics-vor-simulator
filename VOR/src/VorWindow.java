@@ -27,9 +27,9 @@ import java.io.IOException;
 import javax.swing.border.LineBorder;
 
 /**
- * Just playing around with WindowBuilder
- * Tested out display of the radio's radial and station ID
- * 
+ * Bult basic layout using WindowBuilder and adjusted accordingly
+ * VOR GUI interface.  Simulates a VOR using a radio that generates
+ * a random radial to be intercepted.
  * @author Duane Leong
  */
 

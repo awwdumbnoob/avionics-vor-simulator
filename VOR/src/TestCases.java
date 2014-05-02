@@ -44,12 +44,12 @@ public class TestCases {
 	@Test
 	public void testNeedleAngle() {
 		int[] obs = {-175, -89, -81, -80, -10, -9, -8, 0, 8, 9, 10, 89, 100, 101, 188, 360};
-		int[] expected = {-5, 10, 10, -10, -10, -10, -10, -10, -2, -1, 0, 10, 10, -10, -2, -10};
+		int[] expected = {-5, -10, -10, -10, -10, -9, -8, 0, 8, 9, 10, 10, 10, 10, -8, 0};
 		
 		for (int i = 0; i < obs.length; i++) {
-			int answer = Calculations.needleAngle(10, obs[i]);
+			int answer = Calculations.needleAngle(0, obs[i]);
 			//System.out.println(obs[i] + ":" + expected[i] + ":" + answer);
-			assertTrue("Expected radial is " + answer, answer == expected[i]);
+			assertTrue("Expected radial is " + expected[i] + ": Answer is " + answer + obs[i], answer == expected[i]);
 		}
 		
 	}

@@ -90,9 +90,13 @@ public class Calculations {
 	 * @return True if the VOR is abeam, false otherwise
 	 */
 	public static boolean checkAbeam(int intercepted, int obs) {
-		int rotation = Calculations.shortestRadial(obs, intercepted);
-		int differenceTo90 = Math.abs(Calculations.difference(rotation, 90));
-		return (differenceTo90 <= 1);
+		int firstRadial = Calculations.shortestRadial(obs, intercepted);
+		int oppositeRadial = Calculations.shortestRadial(obs+180, intercepted);
+		
+		int firstDifferenceTo90 = Math.abs(Calculations.difference(90, firstRadial));
+		int oppositeDifferenceTo90 = Math.abs(Calculations.difference(90, oppositeRadial));
+		
+		return (firstDifferenceTo90 <= 1) || (oppositeDifferenceTo90 <= 1);
 	}
  }
 

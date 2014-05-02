@@ -57,7 +57,7 @@ public class Vor {
 	 */
 	public boolean getSignal() {
 		int intercepted = radio.getRadial();
-		return !(overStation) ||
+		return !(overStation) &&
 				!(Calculations.checkAbeam(intercepted, this.obsInput));
 	}
 	

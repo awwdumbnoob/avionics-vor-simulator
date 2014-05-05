@@ -15,8 +15,9 @@ public class TestCases {
 	public void testRadio() {
 		Radio radio = new Radio();
 		for (int i = 0; i < 10000; i++) {
-			int radial = radio.getRadial();
 			String id = radio.getStationID();
+			int radial = radio.getRadial();
+			//regular expression checks for 3 characters from A to Z
 			assertTrue("Valid Station ID", id.matches("[A-Z]{3}"));
 			assertTrue("Radial between 0 and 359", radial >= 0 && radial <=359 );
 			radio.setRandom();

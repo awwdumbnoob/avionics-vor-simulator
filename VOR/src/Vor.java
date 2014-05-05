@@ -8,6 +8,8 @@ import java.util.Random;
  */
 public class Vor {
 	
+	//1:OVER_RADIO+1 chance of being over the radio tower
+	public static final int OVER_RADIO = 24;
 	private Radio radio;
 	private int obsInput; //value of obs input
 	private boolean overStation;
@@ -18,9 +20,9 @@ public class Vor {
 	public Vor() {
 		this.radio = new Radio();
 		this.obsInput = 0;
-		//1:25 chance the VOR is over the radio station
+		//1:OVER_RADIO+1 chance of being over the radio tower
 		Random random = new Random();
-		this.overStation = (random.nextInt(25) == 0);
+		this.overStation = (random.nextInt(OVER_RADIO) == 0);
 	}
 	
 	/**
@@ -56,9 +58,9 @@ public class Vor {
 	 * @return True if the signal is good, False if bad
 	 */
 	public boolean getSignal() {
-		int intercepted = radio.getRadial();
+		int interceptedRadial = radio.getRadial();
 		return !(overStation) &&
-				!(Calculations.checkAbeam(intercepted, this.obsInput));
+				!(Calculations.checkAbeam(interceptedRadial, this.obsInput));
 	}
 	
 	/**

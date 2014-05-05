@@ -44,7 +44,6 @@ public class Radio {
 		id.append((char)(random.nextInt(26) + 'A'));
 		id.append((char)(random.nextInt(26) + 'A'));
 		id.append((char)(random.nextInt(26) + 'A'));
-		
 		this.stationID = id.toString();
 	}
 	

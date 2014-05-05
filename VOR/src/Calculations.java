@@ -17,13 +17,13 @@ public class Calculations {
 	}
 	
 	/**
-	 * Returns the difference between angle x and y
-	 * @param x first angle
-	 * @param y second angle
+	 * Returns the difference between angle firstAngle and secondAngle
+	 * @param firstAngle first angle
+	 * @param secondAngle second angle to subtract from first angle
 	 * @return difference between the two angles
 	 */
-	public static int difference(int x, int y) {
-		return x-y;
+	public static int difference(int firstAngle, int secondAngle) {
+		return firstAngle-secondAngle;
 	}
 	
 	/**
@@ -52,9 +52,7 @@ public class Calculations {
 	 * @return int radial value of the needle
 	 */
 	public static int needleAngle(int intercepted, int obs) {
-		
 		int rotation;
-		
 		//checks for the case of going TO
 		if (goingTo(intercepted, obs)) {
 			rotation = -shortestRadial(intercepted+180, obs);
@@ -62,10 +60,8 @@ public class Calculations {
 		else {
 			rotation = shortestRadial(intercepted, obs);
 		}
-
 		//clamps rotation between -10 and 10 degrees
 		int clampedRotation = Math.max(-10, Math.min(10, rotation));
-		
 		return clampedRotation;		
 	}
 	

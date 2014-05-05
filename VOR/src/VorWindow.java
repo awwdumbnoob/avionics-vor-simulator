@@ -43,7 +43,7 @@ public class VorWindow {
 	private JTextField signalOutput;
 	private JLabel toLabel;
 	private JLabel fromLabel;
-	private BufferedImage img;
+	private BufferedImage background;
 	
 
 	/**
@@ -226,21 +226,29 @@ public class VorWindow {
 		fromLabel.setBounds(312, 197, 61, 16);
 		rightPanel.add(fromLabel);
 		//Displays correct information
-		if (vor.goingTo()) {
-			toLabel.setEnabled(true);
-			fromLabel.setEnabled(false);
+		if(vor.getSignal()) {
+			if (vor.goingTo()) {
+				toLabel.setEnabled(true);
+				fromLabel.setEnabled(false);
+			}
+			else {
+				toLabel.setEnabled(false);
+				fromLabel.setEnabled(true);
+			}
 		}
 		else {
 			toLabel.setEnabled(false);
 			fromLabel.setEnabled(false);
 		}
+
+
 		
 		/**
 		 * Draws Needle in it's own panel
 		 */
 		//loads bg image
 		try {
-			img = ImageIO.read(new File ("Grid.png"));
+			background = ImageIO.read(new File ("Grid.png"));
 		} catch (IOException e) {
 			//e.printStackTrace();
 		}
@@ -250,7 +258,7 @@ public class VorWindow {
 			@Override
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
-				g.drawImage(img, 0, 0, null);
+				g.drawImage(background, 0, 0, null);
 				g.setColor(Color.green);
 				g.drawLine(100, 0, 100+(vor.getNeedleAngle()*10), 200);
 			}
@@ -310,23 +318,19 @@ public class VorWindow {
 		}
 		
 		//TO and FROM label check
-		if (vor.goingTo()) {
-			try {
+		if(vor.getSignal()) {
+			if (vor.goingTo()) {
 				toLabel.setEnabled(true);
 				fromLabel.setEnabled(false);
-			} catch (Exception e){
-				System.out.println("Error");
 			}
-
-		}
-		else {
-			try {
+			else {
 				toLabel.setEnabled(false);
 				fromLabel.setEnabled(true);
-			} catch (Exception e){
-				System.out.println("Error");
 			}
-
+		}
+		else {
+			toLabel.setEnabled(false);
+			fromLabel.setEnabled(false);
 		}
 	}
 }
